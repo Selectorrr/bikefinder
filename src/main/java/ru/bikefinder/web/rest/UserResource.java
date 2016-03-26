@@ -5,6 +5,7 @@ import ru.bikefinder.domain.Authority;
 import ru.bikefinder.domain.User;
 import ru.bikefinder.repository.AuthorityRepository;
 import ru.bikefinder.repository.UserRepository;
+import ru.bikefinder.repository.search.UserSearchRepository;
 import ru.bikefinder.security.AuthoritiesConstants;
 import ru.bikefinder.service.MailService;
 import ru.bikefinder.service.UserService;
@@ -29,6 +30,9 @@ import java.net.URISyntaxException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing users.
@@ -72,6 +76,9 @@ public class UserResource {
 
     @Inject
     private UserService userService;
+
+    @Inject
+    private UserSearchRepository userSearchRepository;
 
     /**
      * POST  /users -> Creates a new user.
@@ -196,5 +203,19 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUserInformation(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "A user is deleted with identifier " + login, login)).build();
+    }
+
+    /**
+     * SEARCH  /_search/users/:query -> search for the User corresponding
+     * to the query.
+     */
+    @RequestMapping(value = "/_search/users/{query}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<User> search(@PathVariable String query) {
+        return StreamSupport
+            .stream(userSearchRepository.search(queryStringQuery(query)).spliterator(), false)
+            .collect(Collectors.toList());
     }
 }

@@ -1,24 +1,24 @@
 {
-  "generator-jhipster": {
-    "baseName": "bikefinder",
-    "packageName": "ru.bikefinder",
-    "packageFolder": "ru/bikefinder",
-    "authenticationType": "session",
-    "hibernateCache": "no",
-    "clusteredHttpSession": "no",
-    "websocket": "no",
-    "databaseType": "mongodb",
-    "devDatabaseType": "mongodb",
-    "prodDatabaseType": "mongodb",
-    "searchEngine": "no",
-    "useSass": true,
-    "buildTool": "maven",
-    "frontendBuilder": "grunt",
-    "enableTranslation": false,
-    "enableSocialSignIn": true,
-    "rememberMeKey": "35a8e5f1fcd5b5c6f40fdef4964b0fbb4c3568c7",
-    "testFrameworks": [
-      "gatling"
-    ]
-  }
+    "generator-jhipster": {
+        "baseName": "bikefinder",
+        "packageName": "ru.bikefinder",
+        "packageFolder": "ru/bikefinder",
+        "authenticationType": "session",
+        "hibernateCache": "no",
+        "clusteredHttpSession": "no",
+        "websocket": "no",
+        "databaseType": "mongodb",
+        "devDatabaseType": "mongodb",
+        "prodDatabaseType": "mongodb",
+        "searchEngine": "elasticsearch",
+        "useSass": true,
+        "buildTool": "maven",
+        "frontendBuilder": "grunt",
+        "enableTranslation": false,
+        "enableSocialSignIn": true,
+        "rememberMeKey": "35a8e5f1fcd5b5c6f40fdef4964b0fbb4c3568c7",
+        "testFrameworks": [
+            "gatling"
+        ]
+    }
 }

@@ -22,6 +22,13 @@ spring:
         mongodb:
             uri: mongodb://localhost:27017
             database: bikefinder
+        elasticsearch:
+            cluster-name:
+            cluster-nodes:
+            properties:
+                path:
+                  logs: target/elasticsearch/log
+                  data: target/elasticsearch/data
     mail:
         host: localhost
     messages:

@@ -1,10 +1,9 @@
 package ru.bikefinder.repository;
 
+import org.springframework.data.mongodb.repository.MongoRepository;
 import ru.bikefinder.domain.User;
 
 import java.time.ZonedDateTime;
-import org.springframework.data.mongodb.repository.MongoRepository;
-
 import java.util.List;
 import java.util.Optional;
 

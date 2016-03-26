@@ -1,3 +1,11 @@
+bikefinder-elasticsearch:
+  container_name: bikefinder-elasticsearch
+  image: elasticsearch:1.7.3
+  # volumes:
+  #   - ~/volumes/jhipster/bikefinder/elasticsearch/:/usr/share/elasticsearch/data/
+  ports:
+    - "9200:9200"
+    - "9300:9300"
 bikefinder-mongodb:
   container_name: bikefinder-mongodb
   image: mongo:3.0.7

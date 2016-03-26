@@ -16,6 +16,13 @@ spring:
             host: localhost
             port: 27117
             database: bikefinder
+        elasticsearch:
+            cluster-name:
+            cluster-nodes:
+            properties:
+                path:
+                  logs: target/elasticsearch/log
+                  data: target/elasticsearch/data
     mail:
         host: localhost
     mvc:
