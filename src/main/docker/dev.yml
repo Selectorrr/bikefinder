@@ -1,0 +1,7 @@
+bikefinder-dev-mongodb:
+  container_name: bikefinder-dev-mongodb
+  image: mongo:3.0.7
+  # volumes:
+  #   - ~/volumes/jhipster/bikefinder/dev-mongodb/:/data/db/
+  ports:
+    - "27017:27017"
