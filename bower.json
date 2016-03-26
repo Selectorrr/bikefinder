@@ -24,7 +24,8 @@
     "ngReact": "0.2.0",
     "searchkit": "0.8.3",
     "bootstrap-material-design": "v0.5.9",
-    "arrive": "~2.3.1"
+    "arrive": "2.3.1",
+    "rdash-ui": "1.0.1"
   },
   "devDependencies": {
     "angular-mocks": "1.4.8",
@@ -43,6 +44,15 @@
       "main": [
         "release/bundle.js",
         "release/theme.css"
+      ]
+    },
+    "rdash-ui": {
+      "main": [
+        "dist/css/rdash.css",
+        "dist/fonts/montserrat-regular-webfont.eot",
+        "dist/fonts/montserrat-regular-webfont.svg",
+        "dist/fonts/montserrat-regular-webfont.ttf",
+        "dist/fonts/montserrat-regular-webfont.woff"
       ]
     },
     "bootstrap-material-design": {

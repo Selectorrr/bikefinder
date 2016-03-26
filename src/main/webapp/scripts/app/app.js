@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bikefinderApp', ['LocalStorageModule',
-    'ngResource', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload',
-    // jhipster-needle-angularjs-add-module JHipster will add new module here
+        'ngResource', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload',
+        // jhipster-needle-angularjs-add-module JHipster will add new module here
         'ui.bootstrap', 'ui.router', 'infinite-scroll', 'angular-loading-bar', 'react'])
 
     .run(function ($rootScope, $location, $window, $http, $state, Auth, Principal, ENV, VERSION, $timeout) {
@@ -20,16 +20,16 @@ angular.module('bikefinderApp', ['LocalStorageModule',
 
         });
 
-        $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-            var titleKey = 'bikefinder' ;
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            var titleKey = 'bikefinder';
 
             // Remember previous state unless we've been redirected to login or we've just
             // reset the state memory after logout. If we're redirected to login, our
             // previousState is already set in the authExpiredInterceptor. If we're going
             // to login directly, we don't want to be sent to some previous state anyway
             if (toState.name != 'login' && $rootScope.previousStateName) {
-              $rootScope.previousStateName = fromState.name;
-              $rootScope.previousStateParams = fromParams;
+                $rootScope.previousStateName = fromState.name;
+                $rootScope.previousStateParams = fromParams;
             }
 
             // Set the page title key to the one configured in state or use default one
@@ -42,7 +42,7 @@ angular.module('bikefinderApp', ['LocalStorageModule',
             });
         });
 
-        $rootScope.back = function() {
+        $rootScope.back = function () {
             // If previous state is 'activate' or do not exist go to 'home'
             if ($rootScope.previousStateName === 'activate' || $state.get($rootScope.previousStateName) === null) {
                 $state.go('home');
@@ -51,7 +51,7 @@ angular.module('bikefinderApp', ['LocalStorageModule',
             }
         };
     })
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider,  httpRequestInterceptorCacheBusterProvider, AlertServiceProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, httpRequestInterceptorCacheBusterProvider, AlertServiceProvider) {
         // uncomment below to make alerts look like toast
         //AlertServiceProvider.showAsToast(true);
 
@@ -87,13 +87,47 @@ angular.module('bikefinderApp', ['LocalStorageModule',
 
     })
     // jhipster-needle-angularjs-add-config JHipster will add new application configuration here
-    .config(['$urlMatcherFactoryProvider', function($urlMatcherFactory) {
+    .config(['$urlMatcherFactoryProvider', function ($urlMatcherFactory) {
         $urlMatcherFactory.type('boolean', {
-            name : 'boolean',
-            decode: function(val) { return val == true ? true : val == "true" ? true : false },
-            encode: function(val) { return val ? 1 : 0; },
-            equals: function(a, b) { return this.is(a) && a === b; },
-            is: function(val) { return [true,false,0,1].indexOf(val) >= 0 },
+            name: 'boolean',
+            decode: function (val) {
+                return val == true ? true : val == "true" ? true : false
+            },
+            encode: function (val) {
+                return val ? 1 : 0;
+            },
+            equals: function (a, b) {
+                return this.is(a) && a === b;
+            },
+            is: function (val) {
+                return [true, false, 0, 1].indexOf(val) >= 0
+            },
             pattern: /bool|true|0|1/
         });
-    }]);
+    }]).controller('MasterCtrl', function ($scope, $cookieStore) {
+    /**
+     * Sidebar Toggle & Cookie Control
+     */
+    var mobileView = 992;
+    $scope.getWidth = function () {
+        return window.innerWidth;
+    };
+    $scope.$watch($scope.getWidth, function (newValue, oldValue) {
+        if (newValue >= mobileView) {
+            if (angular.isDefined($cookieStore.get('toggle'))) {
+                $scope.toggle = !$cookieStore.get('toggle') ? false : true;
+            } else {
+                $scope.toggle = true;
+            }
+        } else {
+            $scope.toggle = false;
+        }
+    });
+    $scope.toggleSidebar = function () {
+        $scope.toggle = !$scope.toggle;
+        $cookieStore.put('toggle', $scope.toggle);
+    };
+    window.onresize = function () {
+        $scope.$apply();
+    };
+});

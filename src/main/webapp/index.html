@@ -14,6 +14,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
     <link rel="stylesheet" href="bower_components/searchkit/release/theme.css"/>
+    <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css assets/styles/main.css -->
@@ -28,10 +29,65 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
-<div ui-view="navbar" ng-cloak=""></div>
-<div class="container">
-    <div ui-view="content"></div>
-</div>
+<!--<div ui-view="navbar" ng-cloak=""></div>-->
+<!--<div class="container">-->
+<!--<div ui-view="content"></div>-->
+<!--</div>-->
+
+<div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak ng-controller="MasterCtrl">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar">
+            <li class="sidebar-main">
+                <a ng-click="toggleSidebar()">
+                    Bike Finder
+                    <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                </a>
+            </li>
+            <li class="sidebar-title"><span>НАВИГАЦИЯ</span></li>
+            <li class="sidebar-list">
+                <a href="#">Главная <i class="menu-icon material-icons">home</i></a>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="col-xs-4">
+                <a href="https://github.com/Selectorrr/bikefinder" target="_blank">
+                    Github
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a href="https://github.com/Selectorrr/bikefinder/blob/master/README.md" target="_blank">
+                    About
+                </a>
+            </div>
+            <div class="col-xs-4">
+                <a href="#">
+                    Support
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- End Sidebar -->
+
+    <div id="content-wrapper">
+        <div class="page-content">
+
+            <!-- Header Bar -->
+            <div class="row header">
+                <div class="col-xs-12">
+                    <div ui-view="navbar"></div>
+                </div>
+            </div>
+            <!-- End Header Bar -->
+
+            <!-- Main Content -->
+            <div ui-view="content"></div>
+
+        </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+
+</div><!-- End Page Wrapper -->
+
 
 <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
 <script>

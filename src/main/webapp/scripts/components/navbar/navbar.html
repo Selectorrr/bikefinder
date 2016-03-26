@@ -1,5 +1,61 @@
+<!--<div class="user pull-right">-->
+<!--<div class="item dropdown">-->
+<!--<a href="#" class="dropdown-toggle">-->
+<!--<img src="img/avatar.jpg">-->
+<!--</a>-->
+<!--<ul class="dropdown-menu dropdown-menu-right">-->
+<!--<li class="dropdown-header">-->
+<!--Joe Bloggs-->
+<!--</li>-->
+<!--<li class="divider"></li>-->
+<!--<li class="link">-->
+<!--<a href="#">-->
+<!--Profile-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="link">-->
+<!--<a href="#">-->
+<!--Menu Item-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="link">-->
+<!--<a href="#">-->
+<!--Menu Item-->
+<!--</a>-->
+<!--</li>-->
+<!--<li class="divider"></li>-->
+<!--<li class="link">-->
+<!--<a href="#">-->
+<!--Logout-->
+<!--</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div class="item dropdown">-->
+<!--<a href="#" class="dropdown-toggle">-->
+<!--<i class="fa fa-bell-o"></i>-->
+<!--</a>-->
+<!--<ul class="dropdown-menu dropdown-menu-right">-->
+<!--<li class="dropdown-header">-->
+<!--Notifications-->
+<!--</li>-->
+<!--<li class="divider"></li>-->
+<!--<li>-->
+<!--<a href="#">Server Down!</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="meta">-->
+<!--<div class="page">-->
+<!--Dashboard-->
+<!--</div>-->
+<!--<div class="breadcrumb-links">-->
+<!--Home / Dashboard-->
+<!--</div>-->
+<!--</div>-->
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -7,31 +63,31 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/"><span>jhipster</span> <span class="navbar-version">v{{VERSION}}</span></a>
+            <a class="navbar-brand" href="#/"><span>Bike Finder</span> <span class="navbar-version">v{{VERSION}}</span></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
-                <li ui-sref-active="active">
-                    <a ui-sref="home" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <span class="glyphicon glyphicon-home"></span>
-                        <span class="hidden-sm">Home</span>
-                    </a>
-                </li>
+                <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="home" data-toggle="collapse" data-target=".navbar-collapse.in">-->
+                <!--<span class="glyphicon glyphicon-home"></span>-->
+                <!--<span class="hidden-sm">Home</span>-->
+                <!--</a>-->
+                <!--</li>-->
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-th-list"></span>
-                            <span class="hidden-sm">
-                                Entities
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-                    </ul>
-                </li>
+                <!--<li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">-->
+                <!--<a class="dropdown-toggle" data-toggle="dropdown" href="">-->
+                <!--<span>-->
+                <!--<span class="glyphicon glyphicon-th-list"></span>-->
+                <!--<span class="hidden-sm">-->
+                <!--Entities-->
+                <!--</span>-->
+                <!--<b class="caret"></b>-->
+                <!--</span>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-menu">-->
+                <!--&lt;!&ndash; jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here &ndash;&gt;-->
+                <!--</ul>-->
+                <!--</li>-->
                 <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" id="account-menu">
                         <span>

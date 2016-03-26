@@ -1,5 +1,6 @@
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-
+$navbar-height: 60px;
+$navbar-default-bg: white;
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -316,6 +317,8 @@ ul#strength {
 /* jhipster-needle-scss-add-main JHipster will add new css style */
 
 .sk-layout {
+    margin-top: -15px;
+
     .sk-layout__top-bar {
         position: inherit;
     }
@@ -323,3 +326,15 @@ ul#strength {
         margin: 0;
     }
 }
+
+.navbar {
+    background-color: white !important;
+    color: #333 !important;
+    margin: 0;
+}
+
+.header > .col-xs-12 {
+    margin: 0;
+    padding: 0;
+}
+
