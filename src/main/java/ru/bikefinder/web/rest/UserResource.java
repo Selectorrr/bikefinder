@@ -1,18 +1,6 @@
 package ru.bikefinder.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import ru.bikefinder.domain.Authority;
-import ru.bikefinder.domain.User;
-import ru.bikefinder.repository.AuthorityRepository;
-import ru.bikefinder.repository.UserRepository;
-import ru.bikefinder.repository.search.UserSearchRepository;
-import ru.bikefinder.security.AuthoritiesConstants;
-import ru.bikefinder.service.MailService;
-import ru.bikefinder.service.UserService;
-import ru.bikefinder.web.rest.dto.ManagedUserDTO;
-import ru.bikefinder.web.rest.dto.UserDTO;
-import ru.bikefinder.web.rest.util.HeaderUtil;
-import ru.bikefinder.web.rest.util.PaginationUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -23,20 +11,31 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
+import ru.bikefinder.domain.Authority;
+import ru.bikefinder.domain.User;
+import ru.bikefinder.repository.AuthorityRepository;
+import ru.bikefinder.repository.UserRepository;
+import ru.bikefinder.repository.search.UserSearchRepository;
+import ru.bikefinder.security.AuthoritiesConstants;
+import ru.bikefinder.service.MailService;
+import ru.bikefinder.service.SearchKitService;
+import ru.bikefinder.service.UserService;
+import ru.bikefinder.web.rest.dto.ManagedUserDTO;
+import ru.bikefinder.web.rest.util.HeaderUtil;
+import ru.bikefinder.web.rest.util.PaginationUtil;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing users.
- *
+ * <p>
  * <p>This class accesses the User entity, and needs to fetch its collection of authorities.</p>
  * <p>
  * For a normal use-case, it would be better to have an eager relationship between User and Authority,
@@ -80,6 +79,9 @@ public class UserResource {
     @Inject
     private UserSearchRepository userSearchRepository;
 
+    @Inject
+    private SearchKitService searchKitService;
+
     /**
      * POST  /users -> Creates a new user.
      * <p>
@@ -106,14 +108,14 @@ public class UserResource {
         } else {
             User newUser = userService.createUser(managedUserDTO);
             String baseUrl = request.getScheme() + // "http"
-            "://" +                                // "://"
-            request.getServerName() +              // "myhost"
-            ":" +                                  // ":"
-            request.getServerPort() +              // "80"
-            request.getContextPath();              // "/myContextPath" or "" if deployed in root context
+                "://" +                                // "://"
+                request.getServerName() +              // "myhost"
+                ":" +                                  // ":"
+                request.getServerPort() +              // "80"
+                request.getContextPath();              // "/myContextPath" or "" if deployed in root context
             mailService.sendCreationEmail(newUser, baseUrl);
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
-                .headers(HeaderUtil.createAlert( "A user is created with identifier " + newUser.getLogin(), newUser.getLogin()))
+                .headers(HeaderUtil.createAlert("A user is created with identifier " + newUser.getLogin(), newUser.getLogin()))
                 .body(newUser);
         }
     }
@@ -187,10 +189,11 @@ public class UserResource {
     public ResponseEntity<ManagedUserDTO> getUser(@PathVariable String login) {
         log.debug("REST request to get User : {}", login);
         return userService.getUserWithAuthoritiesByLogin(login)
-                .map(ManagedUserDTO::new)
-                .map(managedUserDTO -> new ResponseEntity<>(managedUserDTO, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+            .map(ManagedUserDTO::new)
+            .map(managedUserDTO -> new ResponseEntity<>(managedUserDTO, HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
     /**
      * DELETE  USER :login -> delete the "login" User.
      */
@@ -202,20 +205,19 @@ public class UserResource {
     public ResponseEntity<Void> deleteUser(@PathVariable String login) {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUserInformation(login);
-        return ResponseEntity.ok().headers(HeaderUtil.createAlert( "A user is deleted with identifier " + login, login)).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createAlert("A user is deleted with identifier " + login, login)).build();
     }
 
     /**
-     * SEARCH  /_search/users/:query -> search for the User corresponding
+     * SEARCH  /users/_search/:query -> search for the User corresponding
      * to the query.
      */
-    @RequestMapping(value = "/_search/users/{query}",
-        method = RequestMethod.GET,
+    @RequestMapping(value = "/users/_search",
+        method = RequestMethod.POST,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<User> search(@PathVariable String query) {
-        return StreamSupport
-            .stream(userSearchRepository.search(queryStringQuery(query)).spliterator(), false)
-            .collect(Collectors.toList());
+    public String search(@RequestBody SearchKitService.QueryWrapper queryWrapper) {
+        return searchKitService.search(queryWrapper);
     }
+
 }
