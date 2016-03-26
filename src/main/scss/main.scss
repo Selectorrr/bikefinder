@@ -1,3 +1,4 @@
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "bootstrap-material-design/sass/bootstrap-material-design.scss";
@@ -8,7 +9,6 @@ $brand-success: $light-green;
 $brand-danger: $deep-orange;
 $brand-warning: $orange;
 $brand-info: $cyan;
-$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 $navbar-height: 60px;
 $navbar-default-bg: white;
 //
