@@ -63,7 +63,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/"><span>Bike Finder</span> <span class="navbar-version">v{{VERSION}}</span></a>
+
+            <a class="navbar-brand" href="#/"><i class="material-icons" style="max-width:100px; margin-top: -7px;">directions_bike</i>
+                <span>Bike Finder</span> <span class="navbar-version">v{{VERSION}}</span></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
             <ul class="nav navbar-nav navbar-right">
@@ -91,7 +93,7 @@
                 <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" id="account-menu">
                         <span>
-                            <span class="glyphicon glyphicon-user"></span>
+                            <i class="material-icons">account_box</i>
                             <span class="hidden-sm">
                                 Account
                             </span>
@@ -99,24 +101,37 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
+                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse"
+                                                                             data-target=".navbar-collapse.in"><i
+                            class="material-icons">build</i>
                             &#xA0;<span>Settings</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
+                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse"
+                                                                             data-target=".navbar-collapse.in"><i
+                            class="material-icons">lock_outline</i>
                             &#xA0;<span>Password</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-cloud"></span>
+                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse"
+                                                                             data-target=".navbar-collapse.in"><i
+                            class="material-icons">cloud_queue</i>
                             &#xA0;<span>Sessions</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" id="logout" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                        <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" id="logout"
+                                                                             data-toggle="collapse"
+                                                                             data-target=".navbar-collapse.in"><i
+                            class="material-icons">exit_to_app</i>
                             &#xA0;<span>Sign out</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse"
+                                                                              data-target=".navbar-collapse.in"><i
+                            class="material-icons">input</i>
                             &#xA0;<span>Sign in</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
+                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse"
+                                                                              data-target=".navbar-collapse.in"><i
+                            class="material-icons">add_circle_outline</i>
                             &#xA0;<span>Register</span></a></li>
                     </ul>
                 </li>
                 <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" id="admin-menu">
                         <span>
-                            <span class="glyphicon glyphicon-tower"></span>
+                            <i class="material-icons">build</i>
                             <span class="hidden-sm">Administration</span>
                             <b class="caret"></b>
                         </span>

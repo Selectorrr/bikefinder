@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-4">
               <button class="btn btn-primary" ui-sref="user-management.new">
-                  <span class="glyphicon glyphicon-flash"></span> <span>Create a new User</span>
+                  <i class="material-icons">flash_on</i> <span>Create a new User</span>
               </button>
           </div>
         </div>
@@ -18,7 +18,7 @@
                 <th>Login</th>
                 <th>Email</th>
                 <th></th>
-                
+
                 <th>Profiles</th>
                 <th>CreatedDate</th>
                 <th>LastModifiedBy</th>
@@ -37,7 +37,7 @@
                     <span class="label label-success" ng-click="setActive(user, false)" ng-show="user.activated"
                           style="cursor: pointer;">Activated</span>
                 </td>
-                
+
                 <td>
                     <div ng-repeat="authority in user.authorities">
                         <span class="label label-info">{{ authority }}</span>
@@ -50,18 +50,18 @@
                     <button type="submit"
                             ui-sref="user-management-detail({login:user.login})"
                             class="btn btn-info btn-sm">
-                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <i class="material-icons">visibility</i>
                     </button>
                     <button type="submit"
                             ui-sref="user-management.edit({login:user.login})"
                             class="btn btn-primary btn-sm">
-                        <span class="glyphicon glyphicon-pencil"></span>
+                        <i class="material-icons">mode_edit</i>
                     </button>
                     <button type="submit"
                             ui-sref="user-management.delete({login:user.login})"
                             class="btn btn-danger btn-sm"
                             ng-disabled="currentAccount.login==user.login">
-                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        <i class="material-icons">remove_circle_outline</i>
                     </button>
                 </td>
             </tr>
