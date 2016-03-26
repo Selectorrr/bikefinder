@@ -317,10 +317,10 @@ ul#strength {
 /* jhipster-needle-scss-add-main JHipster will add new css style */
 
 .sk-layout {
-    margin-top: -15px;
-
     .sk-layout__top-bar {
         position: inherit;
+        background: white;
+        box-shadow: none;
     }
     .sk-layout__body {
         margin: 0;
@@ -338,3 +338,10 @@ ul#strength {
     padding: 0;
 }
 
+.sk-search-box {
+    &__text {
+        &::-webkit-input-placeholder {
+            color: rgb(175, 175, 175);
+        }
+    }
+}
