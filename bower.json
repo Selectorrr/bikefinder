@@ -14,7 +14,7 @@
     "angular-resource": "1.4.8",
     "angular-sanitize": "1.4.8",
     "angular-ui-router": "0.2.15",
-    "bootstrap-sass": "3.3.5",
+    "bootstrap-sass": "3.3.6",
     "jquery": "2.1.4",
     "json3": "3.3.2",
     "modernizr": "3.2.0",
@@ -22,7 +22,9 @@
     "ngInfiniteScroll": "1.2.1",
     "swagger-ui": "2.1.3",
     "ngReact": "0.2.0",
-    "searchkit": "0.8.3"
+    "searchkit": "0.8.3",
+    "bootstrap-material-design": "v0.5.9",
+    "arrive": "~2.3.1"
   },
   "devDependencies": {
     "angular-mocks": "1.4.8",
@@ -31,13 +33,22 @@
   "resolutions": {
     "angular": "1.4.8",
     "angular-cookies": "1.4.8",
-    "jquery": "2.1.4"
+    "jquery": "2.1.4",
+    "bootstrap-material-design": "v0.5.9",
+    "bootstrap": "~3.3.6",
+    "bootstrap-sass": "~3.3.6"
   },
   "overrides": {
     "searchkit": {
       "main": [
         "release/bundle.js",
         "release/theme.css"
+      ]
+    },
+    "bootstrap-material-design": {
+      "main": [
+        "dist/js/material.js",
+        "dist/js/ripples.js"
       ]
     }
   }

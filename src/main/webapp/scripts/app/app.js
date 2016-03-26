@@ -5,7 +5,7 @@ angular.module('bikefinderApp', ['LocalStorageModule',
     // jhipster-needle-angularjs-add-module JHipster will add new module here
         'ui.bootstrap', 'ui.router', 'infinite-scroll', 'angular-loading-bar', 'react'])
 
-    .run(function ($rootScope, $location, $window, $http, $state,  Auth, Principal, ENV, VERSION) {
+    .run(function ($rootScope, $location, $window, $http, $state, Auth, Principal, ENV, VERSION, $timeout) {
 
         $rootScope.ENV = ENV;
         $rootScope.VERSION = VERSION;
@@ -37,6 +37,9 @@ angular.module('bikefinderApp', ['LocalStorageModule',
                 titleKey = toState.data.pageTitle;
             }
             $window.document.title = titleKey;
+            $timeout(function () {
+                $.material.init()
+            });
         });
 
         $rootScope.back = function() {
