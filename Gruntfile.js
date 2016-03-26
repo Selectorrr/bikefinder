@@ -53,6 +53,10 @@ module.exports = function (grunt) {
             sass: {
                 files: ['src/main/scss/**/*.{scss,sass}'],
                 tasks: ['sass:server']
+            },
+            babel: {
+                files: ['src/main/jsx/**/*.jsx'],
+                tasks: ['babel:jsx']
             }
         },
         autoprefixer: {
@@ -65,7 +69,7 @@ module.exports = function (grunt) {
                     /angular-i18n/, // localizations are loaded dynamically
                     'bower_components/bootstrap/' // Exclude Bootstrap LESS as we use bootstrap-sass
                 ],
-                ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files 
+                ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files
             },
             test: {
                 src: 'src/test/javascript/karma.conf.js',
@@ -336,6 +340,21 @@ module.exports = function (grunt) {
                     VERSION: parseVersionFromPomXml()
                 }
             }
+        },
+        babel: {
+            options: {
+                plugins: ['transform-react-jsx'], // npm install babel-plugin-transform-react-jsx
+                presets: ['es2015', 'react'] // npm install babel-preset-es2015 babel-preset-react
+            },
+            jsx: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/main/jsx',
+                    src: ['**/*JSX.jsx'],
+                    dest: 'src/main/webapp/scripts/',
+                    ext: '.js'
+                }]
+            }
         }
     });
 
@@ -382,6 +401,6 @@ module.exports = function (grunt) {
         'htmlmin'
     ]);
 
-    
+
     grunt.registerTask('default', ['serve']);
 };
