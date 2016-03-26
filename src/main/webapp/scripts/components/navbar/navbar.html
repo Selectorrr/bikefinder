@@ -95,7 +95,7 @@
                         <span>
                             <i class="material-icons">account_box</i>
                             <span class="hidden-sm">
-                                Account
+                                Профиль
                             </span>
                             <b class="caret"></b>
                         </span>
@@ -104,53 +104,53 @@
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse"
                                                                              data-target=".navbar-collapse.in"><i
                             class="material-icons">build</i>
-                            &#xA0;<span>Settings</span></a></li>
+                            &#xA0;<span>Настройки</span></a></li>
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse"
                                                                              data-target=".navbar-collapse.in"><i
                             class="material-icons">lock_outline</i>
-                            &#xA0;<span>Password</span></a></li>
+                            &#xA0;<span>Пароль</span></a></li>
                         <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse"
                                                                              data-target=".navbar-collapse.in"><i
                             class="material-icons">cloud_queue</i>
-                            &#xA0;<span>Sessions</span></a></li>
+                            &#xA0;<span>Сессии</span></a></li>
                         <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" id="logout"
                                                                              data-toggle="collapse"
                                                                              data-target=".navbar-collapse.in"><i
                             class="material-icons">exit_to_app</i>
-                            &#xA0;<span>Sign out</span></a></li>
+                            &#xA0;<span>Выйти</span></a></li>
                         <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse"
                                                                               data-target=".navbar-collapse.in"><i
                             class="material-icons">input</i>
-                            &#xA0;<span>Sign in</span></a></li>
+                            &#xA0;<span>Войти</span></a></li>
                         <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse"
                                                                               data-target=".navbar-collapse.in"><i
                             class="material-icons">add_circle_outline</i>
-                            &#xA0;<span>Register</span></a></li>
+                            &#xA0;<span>Регистрация</span></a></li>
                     </ul>
                 </li>
                 <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="" id="admin-menu">
                         <span>
                             <i class="material-icons">build</i>
-                            <span class="hidden-sm">Administration</span>
+                            <span class="hidden-sm">Администрирование</span>
                             <b class="caret"></b>
                         </span>
                     </a>
                     <ul class="dropdown-menu">
                         <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
-                            &#xA0;<span>User management</span></a></li>
+                            &#xA0;<span>Пользователи</span></a></li>
                         <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-dashboard"></span>
-                            &#xA0;<span>Metrics</span></a></li>
+                            &#xA0;<span>Метрики</span></a></li>
                         <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-heart"></span>
-                            &#xA0;<span>Health</span></a></li>
+                            &#xA0;<span>Состояние</span></a></li>
                         <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
-                            &#xA0;<span>Configuration</span></a></li>
+                            &#xA0;<span>Настройки</span></a></li>
                         <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
-                            &#xA0;<span>Audits</span></a></li>
+                            &#xA0;<span>Аудит</span></a></li>
                         <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
-                            &#xA0;<span>Logs</span></a></li>
+                            &#xA0;<span>Логи</span></a></li>
                         <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-book"></span>
-                            &#xA0;<span>API</span></a></li>
+                            &#xA0;<span>АПИ</span></a></li>
                         <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
                     </ul>
                 </li>

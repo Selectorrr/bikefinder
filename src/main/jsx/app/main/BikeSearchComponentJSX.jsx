@@ -8,6 +8,13 @@ const Searchbox = Searchkit.SearchBox;
 
 const Hits = Searchkit.Hits;
 
+sk.translateFunction = (key) => {
+    let translations = {
+        "searchbox.placeholder": "Поиск"
+    };
+    return translations[key]
+};
+
 class MovieHit extends React.Component {
 
     render() {
