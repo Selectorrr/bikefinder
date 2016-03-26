@@ -3,13 +3,18 @@ $navbar-height: 60px;
 $navbar-default-bg: white;
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+@import "bootstrap-material-design/sass/bootstrap-material-design.scss";
+$brand-primary: $indigo;
+$brand-success: $light-green;
+$brand-danger: $deep-orange;
+$brand-warning: $orange;
+$brand-info: $cyan;
 // endbower
 //
-//body {
-//    background: #fafafa;
-//    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-//    color: #333;
-//}
+body {
+    background: #f3f3f3;
+}
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;

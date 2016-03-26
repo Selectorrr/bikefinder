@@ -139,7 +139,8 @@ module.exports = function (grunt) {
         sass: {
             options: {
                 includePaths: [
-                    'src/main/webapp/bower_components'
+                    'src/main/webapp/bower_components',
+                    'src/main/webapp/bower_components/bootstrap-sass/assets/stylesheets'
                 ]
             },
             server: {
