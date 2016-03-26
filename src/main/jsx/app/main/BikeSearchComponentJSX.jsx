@@ -27,22 +27,23 @@ class MovieHit extends React.Component {
 }
 var BikeSearchComponent = React.createClass({
     render: function () {
-
-        return (<div>
-
+        return (
             <SearchkitProvider searchkit={sk}>
-                <div className="search">
-                    <div className="search__query">
-                        <Searchbox searchOnChange={true}
-                                   prefixQueryFields={["actors^1","type^2","languages","title^10"]}/>
+                <div className="sk-layout">
+                    <div className="sk-layout__top-bar sk-top-bar">
+                        <div className="sk-top-bar__content">
+                            <Searchbox searchOnChange={true}
+                                       prefixQueryFields={["actors^1","type^2","languages","title^10"]}/>
+                        </div>
                     </div>
-                    <div className="search__results">
-                        <Hits hitsPerPage={6} itemComponent={MovieHit}/>
+                    <div className="sk-layout__body">
+                        <div className="sk-layout__results sk-results-list">
+                            <div className="sk-results-list__action-bar sk-action-bar">
+                            </div>
+                            <Hits hitsPerPage={6} itemComponent={MovieHit}/></div>
                     </div>
                 </div>
-            </SearchkitProvider>
-
-        </div>);
+            </SearchkitProvider>);
     }
 });
 angular.module('bikefinderApp')
