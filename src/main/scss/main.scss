@@ -1,16 +1,16 @@
-$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-$navbar-height: 60px;
-$navbar-default-bg: white;
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
-
 @import "bootstrap-material-design/sass/bootstrap-material-design.scss";
+// endbower
+
 $brand-primary: $indigo;
 $brand-success: $light-green;
 $brand-danger: $deep-orange;
 $brand-warning: $orange;
 $brand-info: $cyan;
-// endbower
+$icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+$navbar-height: 60px;
+$navbar-default-bg: white;
 //
 body {
     background: #f3f3f3;
