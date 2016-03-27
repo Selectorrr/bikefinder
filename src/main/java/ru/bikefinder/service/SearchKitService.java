@@ -1,15 +1,10 @@
 package ru.bikefinder.service;
 
-import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.json.JSONObject;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.data.elasticsearch.core.FacetedPage;
-import org.springframework.data.elasticsearch.core.SearchResultMapper;
-import org.springframework.data.elasticsearch.core.query.StringQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.stereotype.Service;
-import ru.bikefinder.domain.User;
 
 import javax.inject.Inject;
 
@@ -22,26 +17,18 @@ public class SearchKitService {
     private ElasticsearchTemplate elasticsearchTemplate;
 
     public String search(QueryWrapper queryWrapper) {
-        final String[] result = {null};
+
         if (queryWrapper.size == 0) {
             queryWrapper.size = 1;
         }
-        PageRequest pageable = new PageRequest(0, queryWrapper.size); //todo: implement page number
-        String query = null;
+        String query;
         if (queryWrapper.query != null) {
             query = queryWrapper.query.toString();
         } else {
             query = "{ \"match_all\": {} }";
         }
-        elasticsearchTemplate.queryForPage(new StringQuery(query, pageable), User.class,
-            new SearchResultMapper() {
-                @Override
-                public <T> FacetedPage<T> mapResults(SearchResponse response, Class<T> clazz, Pageable pageable) {
-                    result[0] = response.toString();
-                    return null;
-                }
-            });
-        return result[0];
+        NativeSearchQuery searchQuery = new NativeSearchQuery(QueryBuilders.wrapperQuery(query));
+        return elasticsearchTemplate.query(searchQuery, response -> response).toString();
     }
 
     public static class QueryWrapper {
