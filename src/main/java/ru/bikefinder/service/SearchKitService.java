@@ -24,8 +24,13 @@ public class SearchKitService {
     public String search(QueryWrapper queryWrapper) {
         final String[] result = {null};
         PageRequest pageable = new PageRequest(0, queryWrapper.size); //todo: implement page number
-        StringQuery query = new StringQuery(queryWrapper.query.toString(), pageable);
-        elasticsearchTemplate.queryForPage(query, User.class,
+        String query = null;
+        if (queryWrapper.query != null) {
+            query = queryWrapper.query.toString();
+        } else {
+            query = "{ \"match_all\": {} }";
+        }
+        elasticsearchTemplate.queryForPage(new StringQuery(query, pageable), User.class,
             new SearchResultMapper() {
                 @Override
                 public <T> FacetedPage<T> mapResults(SearchResponse response, Class<T> clazz, Pageable pageable) {
