@@ -23,6 +23,9 @@ public class SearchKitService {
 
     public String search(QueryWrapper queryWrapper) {
         final String[] result = {null};
+        if (queryWrapper.size == 0) {
+            queryWrapper.size = 1;
+        }
         PageRequest pageable = new PageRequest(0, queryWrapper.size); //todo: implement page number
         String query = null;
         if (queryWrapper.query != null) {
