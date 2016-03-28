@@ -1,9 +1,15 @@
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+$font-family-base: 'Roboto', sans-serif;
+$font-family-sans-serif: 'Roboto', sans-serif !default;
+$font-family-serif: 'Roboto', serif !default;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace: 'Roboto', monospace !default;
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
-@import "bootstrap-material-design/sass/bootstrap-material-design.scss";
 
+@import "bootstrap-material-design/sass/bootstrap-material-design.scss";
 $brand-primary: $indigo;
 $brand-success: $light-green;
 $brand-danger: $deep-orange;
@@ -11,6 +17,7 @@ $brand-warning: $orange;
 $brand-info: $cyan;
 $navbar-height: 60px;
 $navbar-default-bg: white;
+
 //
 body {
     background: #f3f3f3;
@@ -333,8 +340,8 @@ ul#strength {
 }
 
 .navbar {
-    background-color: white !important;
-    color: #333 !important;
+    background-color: #37517C !important;
+    //color: #333 !important;
     margin: 0;
     min-height: 60px !important;
 }
@@ -419,4 +426,29 @@ ul#strength {
         font-style: normal;
         font-weight: 700
     }
+}
+
+.sk-layout__filters {
+    margin: 1px 0 1px 1px;
+}
+
+.sk-layout__results {
+    margin: 1px;
+}
+
+.card-1 {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    transition: all 0.2s ease-in-out;
+}
+
+.card-1:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.row.header {
+    margin-bottom: 0;
+}
+
+.sidebar, ul.sidebar .sidebar-main a, .sidebar-footer, ul.sidebar .sidebar-list a:hover, #page-wrapper:not(.open) ul.sidebar .sidebar-title.separator {
+    background-color: #37517C;
 }
