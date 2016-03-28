@@ -1,7 +1,8 @@
 /**
  * Created by Selector on 26.03.2016.
  */
-const host = "http://demo.searchkit.co/api/movies";
+// const host = "http://demo.searchkit.co/api/movies";
+const host = "http://localhost:9200/";
 // const host = "api/users";
 const sk = new Searchkit.SearchkitManager(host, {});
 

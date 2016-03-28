@@ -15,10 +15,8 @@ import ru.bikefinder.domain.Authority;
 import ru.bikefinder.domain.User;
 import ru.bikefinder.repository.AuthorityRepository;
 import ru.bikefinder.repository.UserRepository;
-import ru.bikefinder.repository.search.UserSearchRepository;
 import ru.bikefinder.security.AuthoritiesConstants;
 import ru.bikefinder.service.MailService;
-import ru.bikefinder.service.SearchKitService;
 import ru.bikefinder.service.UserService;
 import ru.bikefinder.web.rest.dto.ManagedUserDTO;
 import ru.bikefinder.web.rest.util.HeaderUtil;
@@ -76,11 +74,6 @@ public class UserResource {
     @Inject
     private UserService userService;
 
-    @Inject
-    private UserSearchRepository userSearchRepository;
-
-    @Inject
-    private SearchKitService searchKitService;
 
     /**
      * POST  /users -> Creates a new user.
@@ -207,17 +200,4 @@ public class UserResource {
         userService.deleteUserInformation(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert("A user is deleted with identifier " + login, login)).build();
     }
-
-    /**
-     * SEARCH  /users/_search/:query -> search for the User corresponding
-     * to the query.
-     */
-    @RequestMapping(value = "/users/_search",
-        method = RequestMethod.POST,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    public String search(@RequestBody SearchKitService.QueryWrapper queryWrapper) {
-        return searchKitService.search(queryWrapper);
-    }
-
 }

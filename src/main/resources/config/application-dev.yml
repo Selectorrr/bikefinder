@@ -26,9 +26,14 @@ spring:
             cluster-name:
             cluster-nodes:
             properties:
+                http.enabled: true
+                http.port: 9200
+                http.compression: true
+                http.cors.enabled: true
+                http.cors.allow-origin: /https?:\/\/localhost(:[0-9]+)?/
                 path:
-                  logs: target/elasticsearch/log
-                  data: target/elasticsearch/data
+                  logs: /data/elasticsearch/log
+                  data: /data
     mail:
         host: localhost
     messages:
