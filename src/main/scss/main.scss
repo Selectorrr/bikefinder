@@ -6,6 +6,7 @@ $font-family-serif: 'Roboto', serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace: 'Roboto', monospace !default;
 $text-color: white;
+$table-bg-accent: rgba(249, 249, 249, 0.1);
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -19,6 +20,7 @@ $brand-info: $cyan;
 $navbar-height: 60px;
 $navbar-default-bg: white;
 //$input-color-placeholder: white;
+
 //
 body {
     background: #37517C;
