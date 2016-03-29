@@ -8,7 +8,7 @@ angular.module('bikefinderApp')
                 url: '/health',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'Health checks'
+                    pageTitle: 'health.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bikefinderApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('health');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

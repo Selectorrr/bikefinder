@@ -7,8 +7,8 @@ angular.module('bikefinderApp')
                 parent: 'account',
                 url: '/login',
                 data: {
-                    authorities: [], 
-                    pageTitle: 'Sign in'
+                    authorities: [],
+                    pageTitle: 'login.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bikefinderApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('login');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

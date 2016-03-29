@@ -8,7 +8,7 @@ angular.module('bikefinderApp')
                 url: '/logs',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'Logs'
+                    pageTitle: 'logs.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bikefinderApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('logs');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

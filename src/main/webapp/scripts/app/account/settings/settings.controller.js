@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bikefinderApp')
-    .controller('SettingsController', function ($scope, Principal, Auth) {
+    .controller('SettingsController', function ($scope, Principal, Auth, Language, $translate) {
         $scope.success = null;
         $scope.error = null;
         Principal.identity().then(function(account) {
@@ -14,6 +14,11 @@ angular.module('bikefinderApp')
                 $scope.success = 'OK';
                 Principal.identity(true).then(function(account) {
                     $scope.settingsAccount = copyAccount(account);
+                });
+                Language.getCurrent().then(function (current) {
+                    if ($scope.settingsAccount.langKey !== current) {
+                        $translate.use($scope.settingsAccount.langKey);
+                    }
                 });
             }).catch(function() {
                 $scope.success = null;

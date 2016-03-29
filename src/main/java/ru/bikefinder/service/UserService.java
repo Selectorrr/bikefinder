@@ -121,7 +121,7 @@ public class UserService {
         user.setLastName(managedUserDTO.getLastName());
         user.setEmail(managedUserDTO.getEmail());
         if (managedUserDTO.getLangKey() == null) {
-            user.setLangKey("en"); // default language is English
+            user.setLangKey("ur"); // default language is Russian
         } else {
             user.setLangKey(managedUserDTO.getLangKey());
         }

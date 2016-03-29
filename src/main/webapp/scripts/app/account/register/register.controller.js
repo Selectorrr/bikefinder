@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bikefinderApp')
-    .controller('RegisterController', function ($scope, $timeout, Auth) {
+    .controller('RegisterController', function ($scope, $translate, $timeout, Auth) {
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;
@@ -13,7 +13,7 @@ angular.module('bikefinderApp')
             if ($scope.registerAccount.password !== $scope.confirmPassword) {
                 $scope.doNotMatch = 'ERROR';
             } else {
-                $scope.registerAccount.langKey =  'en' ;
+                $scope.registerAccount.langKey = $translate.use();
                 $scope.doNotMatch = null;
                 $scope.error = null;
                 $scope.errorUserExists = null;

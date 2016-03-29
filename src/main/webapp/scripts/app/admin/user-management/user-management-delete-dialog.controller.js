@@ -13,22 +13,5 @@ angular.module('bikefinderApp')
                     $uibModalInstance.close(true);
                 });
         };
-        var test = {
-            "query": {
-                "bool": {
-                    "should": [{
-                        "simple_query_string": {
-                            "query": "123",
-                            "fields": ["_all"]
-                        }
-                    }, {
-                        "multi_match": {
-                            "query": "123",
-                            "type": "phrase_prefix",
-                            "fields": ["actors^1", "type^2", "languages", "title^10"]
-                        }
-                    }]
-                }
-            }, "size": 6
-        }
+
     });

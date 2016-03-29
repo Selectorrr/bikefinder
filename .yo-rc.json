@@ -14,7 +14,7 @@
         "useSass": true,
         "buildTool": "maven",
         "frontendBuilder": "grunt",
-        "enableTranslation": false,
+        "enableTranslation": true,
         "enableSocialSignIn": true,
         "rememberMeKey": "35a8e5f1fcd5b5c6f40fdef4964b0fbb4c3568c7",
         "testFrameworks": [

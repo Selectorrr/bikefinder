@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>bikefinder</title>
     <meta name="description" content="">
+    <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- Material Design fonts -->
@@ -13,9 +14,9 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
     <!-- build:css assets/styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css"/>
-    <link rel="stylesheet" href="bower_components/searchkit/release/theme.css"/>
-    <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.css"/>
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/searchkit/release/theme.css" />
+    <link rel="stylesheet" href="bower_components/rdash-ui/dist/css/rdash.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css assets/styles/main.css -->
@@ -107,10 +108,16 @@
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/messageformat/messageformat.js"></script>
+<script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js"></script>
+<script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.js"></script>
+<script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
 <script src="bower_components/json3/lib/json3.js"></script>
@@ -200,6 +207,8 @@
 <script src="scripts/app/error/error.js"></script>
 <script src="scripts/app/main/main.js"></script>
 <script src="scripts/app/main/main.controller.js"></script>
+<script src="scripts/components/language/language.service.js"></script>
+<script src="scripts/components/language/language.controller.js"></script>
 <script src="scripts/app/account/social/directive/social.directive.js"></script>
 <script src="scripts/app/account/social/social-register.js"></script>
 <script src="scripts/app/account/social/social-register.controller.js"></script>
@@ -209,6 +218,7 @@
 <script src="scripts/app/account/sessions/sessions.js"></script>
 <script src="scripts/app/account/sessions/sessions.controller.js"></script>
 <script src="scripts/app/main/BikeSearchComponentJSX.js"></script>
+<script src="bower_components/messageformat/locale/ru.js"></script>
 <!-- endbuild -->
 </body>
 </html>

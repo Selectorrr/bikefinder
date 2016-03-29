@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 
 /**
  * REST controller for managing users.
- * <p>
+ *
  * <p>This class accesses the User entity, and needs to fetch its collection of authorities.</p>
  * <p>
  * For a normal use-case, it would be better to have an eager relationship between User and Authority,
@@ -108,7 +108,7 @@ public class UserResource {
                 request.getContextPath();              // "/myContextPath" or "" if deployed in root context
             mailService.sendCreationEmail(newUser, baseUrl);
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
-                .headers(HeaderUtil.createAlert("A user is created with identifier " + newUser.getLogin(), newUser.getLogin()))
+                .headers(HeaderUtil.createAlert("user-management.created", newUser.getLogin()))
                 .body(newUser);
         }
     }
@@ -147,7 +147,7 @@ public class UserResource {
                 );
                 userRepository.save(user);
                 return ResponseEntity.ok()
-                    .headers(HeaderUtil.createAlert("A user is updated with identifier " + managedUserDTO.getLogin(), managedUserDTO.getLogin()))
+                    .headers(HeaderUtil.createAlert("user-management.updated", managedUserDTO.getLogin()))
                     .body(new ManagedUserDTO(userRepository
                         .findOne(managedUserDTO.getId())));
             })
@@ -186,7 +186,6 @@ public class UserResource {
             .map(managedUserDTO -> new ResponseEntity<>(managedUserDTO, HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-
     /**
      * DELETE  USER :login -> delete the "login" User.
      */
@@ -198,6 +197,6 @@ public class UserResource {
     public ResponseEntity<Void> deleteUser(@PathVariable String login) {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUserInformation(login);
-        return ResponseEntity.ok().headers(HeaderUtil.createAlert("A user is deleted with identifier " + login, login)).build();
+        return ResponseEntity.ok().headers(HeaderUtil.createAlert("user-management.deleted", login)).build();
     }
 }

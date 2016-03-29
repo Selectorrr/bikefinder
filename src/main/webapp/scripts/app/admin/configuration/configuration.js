@@ -8,7 +8,7 @@ angular.module('bikefinderApp')
                 url: '/configuration',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'Configuration'
+                    pageTitle: 'configuration.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bikefinderApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('configuration');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

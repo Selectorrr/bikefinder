@@ -8,7 +8,7 @@ angular.module('bikefinderApp')
                 url: '/password',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Password'
+                    pageTitle: 'global.menu.account.password'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bikefinderApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('password');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });
