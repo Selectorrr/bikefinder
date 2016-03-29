@@ -460,3 +460,7 @@ ul#strength {
 .form-control {
     color: #ffffff;
 }
+
+[ui-view].ng-enter {
+    animation: fadeIn 0.5s;
+}

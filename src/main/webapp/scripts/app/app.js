@@ -3,7 +3,7 @@
 angular.module('bikefinderApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprecht.translate',
         'ngResource', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload',
         // jhipster-needle-angularjs-add-module JHipster will add new module here
-        'ui.bootstrap', 'ui.router', 'infinite-scroll', 'angular-loading-bar', 'react'])
+        'ui.bootstrap', 'ui.router', 'infinite-scroll', 'angular-loading-bar', 'react', 'ngAnimate'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION, $timeout) {
         // update the window title using params in the following
@@ -19,7 +19,7 @@ angular.module('bikefinderApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
                 $window.document.title = title;
             });
         };
-        
+
         $rootScope.ENV = ENV;
         $rootScope.VERSION = VERSION;
         $rootScope.$on('$stateChangeStart', function (event, toState, toStateParams) {
@@ -35,7 +35,7 @@ angular.module('bikefinderApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
             Language.getCurrent().then(function (language) {
                 $translate.use(language);
             });
-            
+
         });
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
@@ -125,7 +125,7 @@ angular.module('bikefinderApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pas
         tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
         tmhDynamicLocaleProvider.useCookieStorage();
         tmhDynamicLocaleProvider.storageKey('NG_TRANSLATE_LANG_KEY');
-        
+
     })
     // jhipster-needle-angularjs-add-config JHipster will add new application configuration here
     .config(['$urlMatcherFactoryProvider', function ($urlMatcherFactory) {
