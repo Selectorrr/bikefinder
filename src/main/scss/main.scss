@@ -5,6 +5,7 @@ $font-family-sans-serif: 'Roboto', sans-serif !default;
 $font-family-serif: 'Roboto', serif !default;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 $font-family-monospace: 'Roboto', monospace !default;
+$text-color: white;
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
@@ -17,10 +18,11 @@ $brand-warning: $orange;
 $brand-info: $cyan;
 $navbar-height: 60px;
 $navbar-default-bg: white;
-
+//$input-color-placeholder: white;
 //
 body {
-    background: #f3f3f3;
+    background: #37517C;
+    color: rgba(255, 255, 255, 1) !important;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -451,4 +453,8 @@ ul#strength {
 
 .sidebar, ul.sidebar .sidebar-main a, .sidebar-footer, ul.sidebar .sidebar-list a:hover, #page-wrapper:not(.open) ul.sidebar .sidebar-title.separator {
     background-color: #37517C;
+}
+
+.form-control {
+    color: #ffffff;
 }
