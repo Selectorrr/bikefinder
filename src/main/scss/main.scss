@@ -6,6 +6,12 @@ $font-family-serif: 'Roboto', serif !default;
 $font-family-monospace: 'Roboto', monospace !default;
 //$text-color: white;
 //$table-bg-accent: rgba(249, 249, 249, 0.1);
+$body-bg: #37517C;
+$brand-primary: #37517C;
+$headings-font-weight: 200;
+
+$gray-base: #FFF;
+
 // bower:scss
 @import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 @import "bootstrap-material-design/sass/bootstrap-material-design.scss";
